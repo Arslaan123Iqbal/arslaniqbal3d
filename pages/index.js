@@ -8,7 +8,7 @@ import Sky from "@/models/Sky";
 import Bird from "@/models/Bird";
 import Plane from "@/models/Plane";
 import HomeInfo from "@/components/HomeInfo";
-import Head from 'next/head'
+import Head from "next/head";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -53,14 +53,14 @@ export default function Home() {
 
   return (
     <section className="relative w-full h-screen">
-           <Head>
+      <Head>
         <title>Arslan Iqbal</title>
       </Head>
-     <div className='absolute left-0 right-0 z-10 flex items-center justify-center top-28'>
-        {currentStage && <HomeInfo currentStage={currentStage} />}
-      </div>
+  
       <Canvas
-        className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
+        className={`w-full h-screen bg-transparent ${
+          isRotating ? "cursor-grabbing" : "cursor-grab"
+        }`}
         camera={{ near: 0.1, far: 1000 }}
       >
         <Suspense fallback={<Loader />}>
@@ -71,9 +71,17 @@ export default function Home() {
             groundColor={"000000"}
             intensity={1}
           />
-          <Plane planePosition={planePosition} planeScale={planeScale} rotation={[0,20,0]} isRotating={isRotating}/>
+              <div className="absolute left-0 right-0 z-10 flex items-center justify-center top-28">
+        {currentStage && <HomeInfo currentStage={currentStage} />}
+      </div>
+          <Plane
+            planePosition={planePosition}
+            planeScale={planeScale}
+            rotation={[0, 20, 0]}
+            isRotating={isRotating}
+          />
           <Bird />
-          <Sky isRotating={isRotating}/>
+          <Sky isRotating={isRotating} />
           <Island
             isRotating={isRotating}
             setIsRotating={setisRotating}
