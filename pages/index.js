@@ -49,14 +49,16 @@ export default function Home() {
 
   const [planeScale, planePosition] = adjustPlaneForScreenSize();
 
-  const [currentStage, setCurrentStage] = useState(1);
+  const [currentStage, setCurrentStage] = useState(0);
 
   return (
     <section className="relative w-full h-screen">
       <Head>
         <title>Arslan Iqbal</title>
       </Head>
-  
+      <div className="absolute left-0 right-0 z-10 flex items-center justify-center top-28">
+        {currentStage>0 && <HomeInfo currentStage={currentStage} />}
+      </div>
       <Canvas
         className={`w-full h-screen bg-transparent ${
           isRotating ? "cursor-grabbing" : "cursor-grab"
@@ -71,9 +73,7 @@ export default function Home() {
             groundColor={"000000"}
             intensity={1}
           />
-              <div className="absolute left-0 right-0 z-10 flex items-center justify-center top-28">
-        {currentStage && <HomeInfo currentStage={currentStage} />}
-      </div>
+         
           <Plane
             planePosition={planePosition}
             planeScale={planeScale}

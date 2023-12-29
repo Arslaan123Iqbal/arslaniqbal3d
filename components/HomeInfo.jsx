@@ -1,6 +1,12 @@
 
 import Image from 'next/image'
 const HomeInfo = ({ currentStage }) => {
+    if (currentStage === 0)
+    return (
+<div className="bg-blue-500 rounded-lg">
+Loading
+</div>
+    );
   if (currentStage === 1)
     return (
 <div className="bg-blue-500 rounded-lg">
